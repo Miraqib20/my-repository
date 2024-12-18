@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Event</title>
+</head>
+<body>
+    <h1>Add New Event</h1>
+    <form method="POST">
+        <label for="title">Event Title:</label><br>
+        <input type="text" id="title" name="title" placeholder="Enter event title" required><br><br>
+
+        <label for="description">Event Description:</label><br>
+        <textarea id="description" name="description" placeholder="Enter event description" required></textarea><br><br>
+
+        <label for="date">Event Date:</label><br>
+        <input type="datetime-local" id="date" name="date" required><br><br>
+
+        <label for="venue_id">Select Venue:</label><br>
+        <select id="venue_id" name="venue_id" required>
+            {% for venue in venues %}
+                <option value="{{ venue.id }}">{{ venue.name }} - {{ venue.location }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <button type="submit">Add Event</button>
+    </form>
+    <a href="{{ url_for('admin_dashboard') }}">Back to Admin Dashboard</a>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Add Bootstrap CSS link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 40px;
+        }
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #007bff;
+        }
+        .event-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .event-list li {
+            margin-bottom: 15px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            transition: background-color 0.3s;
+        }
+        .event-list li:hover {
+            background-color: #f1f1f1;
+        }
+        .event-list a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .event-list a:hover {
+            text-decoration: underline;
+        }
+        .btn-logout {
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        .btn-primary {
+            width: auto;
+        }
+        .event-actions {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-header">
+            <h1>Admin Dashboard</h1>
+            <p>Welcome, <strong>{{ session['username'] }}</strong></p>
+        </div>
+
+        <!-- Create Event Button -->
+        <div class="mb-4 text-center">
+            <a href="/create_event" class="btn btn-primary">Create Event</a>
+        </div>
+
+        <!-- Events List -->
+        <h3>Events</h3>
+        <ul class="event-list">
+            {% for event in events %}
+                <li>
+                    <strong>{{ event.name }}</strong> - 
+                    <span>{{ event.date }}</span>
+                    <div class="event-actions">
+                        <a href="{{ url_for('edit_event', event_id=event.id) }}" class="btn btn-link">Edit</a> |
+                        <a href="{{ url_for('delete_event', event_id=event.id) }}" class="btn btn-link text-danger">Delete</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Manage Participants Section -->
+        <div class="mt-5">
+            <h3>Manage Participants</h3>
+            <a href="{{ url_for('export_participants') }}" class="btn btn-primary">Export Participants</a>
+        </div>
+
+        <!-- Logout Button -->
+        <div class="btn-logout mt-4">
+            <a href="/admin/logout" class="btn btn-danger">Logout</a>
+        </div>
+    </div>
+
+    <!-- Add Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

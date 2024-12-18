@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Event</title>
+</head>
+<body>
+    <h1>Edit Event</h1>
+    <form action="{{ url_for('edit_event', event_id=event.id) }}" method="POST">
+        <label for="name">Event Name:</label>
+        <input type="text" name="name" id="name" value="{{ event.name }}" required><br> <!-- 'name' field should be required -->
+    
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" required>{{ event.description }}</textarea><br>
+    
+        <label for="venue">Venue:</label>
+        <input type="text" name="venue" id="venue" value="{{ event.venue }}" required><br>
+    
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="event_date" value="{{ event.date }}" required><br>
+    
+        <label for="time">Time:</label>
+        <input type="time" name="time" id="event_time" value="{{ event.time }}" required><br>
+    
+        <label for="registration_limit">Registration Limit:</label>
+        <input type="number" name="registration_limit" id="registration_limit" value="{{ event.registration_limit }}" required><br>
+    
+        <button type="submit">Update Event</button>
+    </form>
+    
+</body>
+</html>
+

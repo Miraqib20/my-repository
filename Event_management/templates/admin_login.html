@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <!-- Add Bootstrap CSS link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .form-label {
+            font-weight: 600;
+        }
+        .btn-primary {
+            width: 100%;
+        }
+        .flash-message {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .flash-message.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .flash-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Admin Login</h2>
+
+                <div class="flash-message {{ category }}">
+            
+                </div>
+        <!-- Login Form -->
+        <form action="/admin/login" method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" name="username" id="username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" name="password" id="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+
+    <!-- Add Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+</head>
+<body>
+    <h1>Event Details</h1>
+    {% if event %}
+        <h3>{{ event.name }}</h3>  <!-- Use the correct attribute 'name' -->
+        <p><strong>Description:</strong> {{ event.description }}</p>  <!-- Use the correct attribute 'description' -->
+        <p><strong>Venue:</strong> {{ event.venue }}</p>  <!-- Use the correct attribute 'venue' -->
+        <p><strong>Date:</strong> {{ event.date }}</p>  <!-- Use the correct attribute 'date' -->
+        <p><strong>Time:</strong> {{ event.time }}</p>  <!-- Use the correct attribute 'time' -->
+        <p><strong>Registration Limit:</strong> {{ event.registration_limit }}</p>  <!-- Use the correct attribute 'registration_limit' -->
+    {% else %}
+        <p>Event not found.</p>
+    {% endif %}
+</body>
+</html>
